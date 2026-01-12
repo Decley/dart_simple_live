@@ -4,6 +4,13 @@ on:
   push:
     tags:
       - "tv_*"
+      
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: "tv_1.6.1"
+        required: false
+        default: ""
 jobs:
   build-tv:
     runs-on: macos-latest
