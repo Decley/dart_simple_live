@@ -4,7 +4,7 @@ on:
   push:
     tags:
       - "tv_*"
-      
+  # 编译
   workflow_dispatch:
     inputs:
       ref:
@@ -20,7 +20,8 @@ jobs:
       #签出代码
       - uses: actions/checkout@v4
         with:
-          ref: master
+          fetch-depth: 0
+          ref: ${{ inputs.ref != '' && inputs.ref || github.ref }}
 
       #APK签名设置
       - name: Download Android keystore
